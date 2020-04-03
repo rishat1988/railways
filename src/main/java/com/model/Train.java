@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Entity
@@ -24,6 +25,18 @@ public class Train {
     @Min(value=1, message = "capacity must be more than 0")
     @NotNull(message = "Trains capacity must be filled in")
     private Integer capacityTrain;
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
+    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy(value = "departureTime")
+    private List<Schedule> schedules;
 
     public Train() {
     }

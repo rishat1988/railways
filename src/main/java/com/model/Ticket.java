@@ -14,15 +14,40 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "train_id")
-    @NotBlank(message = "Train number must be filled in")
-    private int trainNumber;
+    @ManyToOne
+    @JoinColumn(name = "train_id")
+    private Train train;
 
-    @Column (name = "passenger_id")
-    @NotBlank(message = "Passenger info must be filled in")
-    private int passengerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "departure_station_id")
+    private Station departure;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "arrival_station_id")
+    private Station arrival;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+//    @ManyToOne
+//    @Column (name = "train_id")
+//    @NotBlank(message = "Train number must be filled in")
+//    private int trainNumber;
+
+
 
     public Ticket() {
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", train=" + train +
+                ", departure=" + departure +
+                ", destination=" + arrival +
+                ", user=" + user +
+                '}';
     }
 
     public int getId() {
@@ -33,28 +58,35 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getTrainNumber() {
-        return trainNumber;
+    public Train getTrain() {
+        return train;
     }
 
-    public void setTrainNumber(int trainNumber) {
-        this.trainNumber = trainNumber;
+    public void setTrain(Train train) {
+        this.train = train;
     }
 
-    public int getPassengerId() {
-        return passengerId;
+    public Station getDeparture() {
+        return departure;
     }
 
-    public void setPassengerId(int passengerId) {
-        this.passengerId = passengerId;
+    public void setDeparture(Station departure) {
+        this.departure = departure;
     }
 
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", trainId=" + trainNumber +
-                ", passengerId=" + passengerId +
-                '}';
+    public Station getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(Station arrival) {
+        this.arrival = arrival;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

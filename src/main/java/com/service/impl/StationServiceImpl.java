@@ -51,4 +51,9 @@ public class StationServiceImpl implements StationService {
     {
         return stationDao.allStations();
     }
+
+    @Override
+    public Station getStationByName(String name) {
+        return  stationDao.getStationByName(name);
+    }
 }

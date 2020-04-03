@@ -16,4 +16,6 @@ public interface StationDao {
 
     List<Station> allStations();
 
+    Station getStationByName (String name);
+
 }

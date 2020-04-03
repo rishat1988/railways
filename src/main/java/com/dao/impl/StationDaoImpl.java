@@ -52,4 +52,10 @@ public class StationDaoImpl implements StationDao {
         Query query = session.createQuery(criteriaQuery);
         return  query.getResultList();
     }
+
+    @Override
+    public Station getStationByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Station.class, name);
+    }
 }

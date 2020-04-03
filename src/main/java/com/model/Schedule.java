@@ -19,7 +19,7 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "train_id")
+    @Column(name = "train_number")
     @NotNull(message = "Numbers train must be filled in")
     private Integer trainNumber;
 
@@ -30,13 +30,13 @@ public class Schedule {
     @Column(name = "arrival_time")
     @DateTimeFormat(pattern = "yyyy-dd-MM  HH:mm")
     @NotNull(message = "Arrival time  must be filled in")
-    private LocalDateTime arrivalTime;
+    private Date arrivalTime;
 
 
     @Column(name = "departure_time")
     @DateTimeFormat(pattern = "yyyy-dd-MM  HH:mm")
     @NotNull(message = "Departure time  must be filled in")
-    private LocalDateTime departureTime;
+    private Date departureTime;
 
     @Transient
     private String stationName;
@@ -68,19 +68,19 @@ public class Schedule {
         this.stationId = stationId;
     }
 
-    public LocalDateTime getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
-    public LocalDateTime getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 

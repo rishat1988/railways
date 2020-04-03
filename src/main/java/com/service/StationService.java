@@ -16,4 +16,6 @@ public interface StationService {
 
     List<Station> allStations();
 
+    Station getStationByName(String name);
+
 }
